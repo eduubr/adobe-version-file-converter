@@ -6,10 +6,10 @@ import Screen from './screen'
 
 function App() {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Screen />
-      <GlobalStyle />
-    </ThemeProvider>
+		<ThemeProvider theme={defaultTheme}>
+			<Screen />
+			<GlobalStyle />
+		</ThemeProvider>
   );
 }
 
