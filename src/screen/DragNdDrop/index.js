@@ -6,19 +6,26 @@ import { DropContainer, UploadMessage } from './style'
 const DragNDrop = () => {
 
 	const showDragMessage = (isDragActive, isDragReject) => {
+
+
+
 		if(!isDragActive) {
-      return <UploadMessage><p>Drag files here</p></UploadMessage>
+      return (<UploadMessage>
+				<p>Drag files here</p>
+				<p>Or double click to open a file</p>
+				</UploadMessage>)
     }
 
     if(isDragReject) {
-      return <UploadMessage type="error"><p>Ops... File don't supported!</p></UploadMessage>
+      return <UploadMessage type="error">Ops... File don't supported!</UploadMessage>
     }
 
-    return <UploadMessage type="success"><p>Drop here</p></UploadMessage>
+    return <UploadMessage type="success">Drop here</UploadMessage>
 	}
 
 	return (
-		<Dropzone accept="" onDropAccepted={() => {}}>
+		// (files) => {files.map((file) => {console.log(file.name)})}
+		<Dropzone accept="" onDropAccepted={()=>{}}>
 			{({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
 				<DropContainer
 				{...getRootProps()}

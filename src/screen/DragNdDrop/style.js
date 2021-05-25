@@ -1,16 +1,18 @@
 import styled, { css } from 'styled-components'
 
 const dragActive = css`
-  border-color: #78e5d5;
+  border-color: #04d46f;
 `;
 
 export const DropContainer = styled.div.attrs({
   className: 'drp-container'
 })`
   flex: 1;
-  padding: 16px;
-  border: 1px dashed #322d41;
-  border-radius: 4px;
+  margin: 16px;
+	/* display: flex; */
+	/* width: 50%; */
+  border: 2px dashed #322d41;
+  border-radius: 5px;
   cursor: pointer;
   background: ${props => props.theme.backgrounds.darker};
 
@@ -20,7 +22,7 @@ export const DropContainer = styled.div.attrs({
 const messageColors = {
   default: '#999',
   error: '#e57878',
-  success: '#78e5d5'
+  success: '#04d46f'
 }
 
 export const UploadMessage = styled.p`
