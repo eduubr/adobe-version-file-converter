@@ -1,10 +1,14 @@
+import React from 'react'
+
 import { Container, Content } from './style'
+import DragNDrop from './DragNdDrop/index'
 
 const screen = () => {
     return (
 			<Container>
 					<Content>
-							hello 2
+						<DragNDrop />
+							{/* hello 2 */}
 					</Content>
 			</Container>
     )
