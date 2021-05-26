@@ -2,12 +2,30 @@ import React, { createContext, useContext, useState } from 'react'
 
 const FileContext = createContext();
 
-const fileArray = [
-	{
-		filename: "",
-		pathName: ""
-	}
-]
+const fileArray = {
+	fileAccept: [],
+	fileReject: []
+};
+
+// {
+// 	fileAccept: [{
+// 		fileName: null,
+// 		path: null
+// 	}],
+// 	fileReject: [{
+// 		fileName: null,
+// 		path: null,
+// 		code: null,
+// 		message: null
+// 	}]
+// };
+
+// [
+// 	{
+// 		fileName: null,
+// 		pathName: null
+// 	}
+// ]
 
 export default function FileInfoProvider({children}) {
 	const [fileInfo, setFileInfo] = useState(fileArray);

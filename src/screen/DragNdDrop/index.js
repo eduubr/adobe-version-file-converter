@@ -2,10 +2,14 @@ import React from 'react'
 import Dropzone from 'react-dropzone'
 
 import { DropContainer, UploadMessage } from './style'
+// import { useDragReject } from '../../context/isdragreject'
+// import { useFileInfo } from '../context/fileInfo'
 
-const DragNDrop = () => {
+const DragNDrop = ({ onUploadAccept, onUploadReject }) => {
 
-	const showDragMessage = (isDragActive, isDragReject) => {
+	// const { isDragReject } = useDragReject();
+
+	const showDragMessage = (isDragActive) => {
 
 
 
@@ -16,24 +20,26 @@ const DragNDrop = () => {
 				</UploadMessage>)
     }
 
-    if(isDragReject) {
-      return <UploadMessage type="error">Ops... File don't supported!</UploadMessage>
-    }
+    // if(isDragReject) {
+    //   return <UploadMessage type="error">Ops... File don't supported!</UploadMessage>
+    // }
 
     return <UploadMessage type="success">Drop here</UploadMessage>
 	}
 
 	return (
 		// (files) => {files.map((file) => {console.log(file.name)})}
-		<Dropzone accept="" onDropAccepted={()=>{}}>
-			{({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
+		// (files)=>{setFileInfo(files.map(getFileData))
+		// files => files.map(files => console.log(files.file.name)) //onDropRejected
+		<Dropzone accept=".prproj" onDropAccepted={onUploadAccept} onDropRejected={onUploadReject} onDrop={()=>{}}>
+			{({ getRootProps, getInputProps, isDragActive}) => (
 				<DropContainer
 				{...getRootProps()}
 				isDragActive={isDragActive}
-				isDragReject={isDragReject}
+				// isDragReject={isDragReject}
 				>
 					<input {...getInputProps()} />
-					{showDragMessage(isDragActive, isDragReject)}
+					{showDragMessage(isDragActive)}
 				</DropContainer>
 			)}
 		</Dropzone>

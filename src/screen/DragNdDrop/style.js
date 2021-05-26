@@ -9,8 +9,6 @@ export const DropContainer = styled.div.attrs({
 })`
   flex: 1;
   margin: 16px;
-	/* display: flex; */
-	/* width: 50%; */
   border: 2px dashed #322d41;
   border-radius: 5px;
   cursor: pointer;
