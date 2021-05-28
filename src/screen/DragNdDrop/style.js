@@ -23,7 +23,7 @@ const messageColors = {
   success: '#04d46f'
 }
 
-export const UploadMessage = styled.p`
+export const UploadMessage = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;

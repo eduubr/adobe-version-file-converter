@@ -2,23 +2,34 @@ import React from 'react'
 
 import { Container, Content } from './style'
 import DragNDrop from './DragNdDrop/index'
-import { useFileInfo } from '../context/fileInfo'
+import { useFileAcceptInfo } from '../context/fileinfoaccept'
+import FileList from './FileList/index'
 // import IsDragRejectProvider, { useDragReject } from '../context/isdragreject'
 // import { getFileExtension } from '../utils/functions'
 // import { getFileData } from '../utils/functions'
 
-const Screen = () => {
+function Screen() {
 
-	const { fileInfo, setFileInfo} = useFileInfo();
+	// const fileArray = {
+	// 	fileAccept: [],
+	// 	fileReject: [],
+	// 	total: 0
+	// };
+	// const [fileInfo, setFileInfoAccept] = useState(fileArray);
+	// let fileSum = 0;
 	// const { setdragReject } = useDragReject();
+
+	const { fileInfoAccept, setFileInfoAccept } = useFileAcceptInfo();
 
 	const handleUploadAccept = array => {
 		const files = array.map( file => ({
 			fileName: file.name,
 			pathName: file.path
 		}));
-		fileInfo.fileAccept = fileInfo.fileAccept.concat(files);
-		setFileInfo(fileInfo);
+		fileInfoAccept.fileAccept = fileInfoAccept.fileAccept.concat(files);
+		fileInfoAccept.total += files.length;
+		setFileInfoAccept(fileInfoAccept);
+	}
 
 		// if(!files.map(file => {
 		// 	const name = getFileExtension(file.fileName);
@@ -31,28 +42,40 @@ const Screen = () => {
 		// }
 		// console.log(files[0].filename);
 		// console.log(files[0].pathname);
-	}
 
-	const handleUploadReject = array => {
+	const handleUploadReject = (array) => {
 		const files = array.map( file => ({
 			fileName: file.file.name,
 			pathName: file.file.path,
 			code: file.errors[0].code,
 			message: file.errors[0].message
 		}));
-		fileInfo.fileReject = fileInfo.fileReject.concat(files);
-		setFileInfo(fileInfo);
+		fileInfoAccept.fileReject = fileInfoAccept.fileReject.concat(files);
+		fileInfoAccept.total += files.length;
+		setFileInfoAccept(fileInfoAccept);
+
 		console.log("filesInfoReject:");
-		console.log(fileInfo);
+		console.log(fileInfoAccept);
+		console.log("reject:");
+		console.log(fileInfoAccept.fileReject.length);
+		console.log("fileSum:");
+		console.log(fileInfoAccept.total);
 	}
+
+	// const handleOnDrop = () => {
+	// 	fileSum = fileInfo.fileAccept.length + fileInfo.fileReject.length;
+	// }
+
+	// const { fileAccept, fileReject } = fileInfo;
 
 	return (
 		<Container>
 				<Content>
 					<DragNDrop
-					onUploadAccept={handleUploadAccept}
-					onUploadReject={handleUploadReject}
+					// onUploadAccept={handleUploadAccept}
+					// onUploadReject={handleUploadReject}
 					/>
+					<FileList />
 					{/* Botao */}
 				</Content>
 		</Container>

@@ -17,7 +17,7 @@ export const Content = styled.div`
 	flex-direction: column;
 `
 
-export const CurrentConnection = styled.div`
-  display: flex;
-  flex: 1;
-`
+// export const CurrentConnection = styled.div`
+//   display: flex;
+//   flex: 1;
+// `
