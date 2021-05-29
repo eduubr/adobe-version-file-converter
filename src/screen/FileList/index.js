@@ -2,7 +2,8 @@ import React from 'react';
 
 import { useFileAcceptInfo } from '../../context/fileinfoaccept'
 import { useFileRejectInfo } from '../../context/fileinforeject'
-// import { Container } from './style'
+import Button from '../../components/button/button'
+import { Container } from './style'
 
 const FileList = ({fileCount}) => {
 
@@ -19,12 +20,12 @@ const FileList = ({fileCount}) => {
 	console.log(fileInfoReject.total);
 
 	return (
-		<span>
+		<Container>
 			{fileInfoAccept.total+fileInfoReject.total>1?
 			`${fileInfoAccept.total+fileInfoReject.total} files uploaded`:
 			`${fileInfoAccept.total+fileInfoReject.total} file uploaded`}
-			<button onClick={()=>{}} >continuar</button>
-		</span>
+			<Button type="submit" color="purple" message="Continuar"/>
+		</Container>
 	)
 }
 
